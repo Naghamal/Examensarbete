@@ -1,0 +1,186 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.box {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+canvas {
+    max-width: 400px;
+    margin: 20px;
+}
+.Ex {
+    width: 1202px;
+    height: 850px;
+    position: relative;
+    background: #F5F5F5;
+    border-radius: 20px;
+}
+
+.Image32 {
+    width: 237px;
+    height: 144px;
+    left: 459px;
+    top: 52px;
+    position: absolute;
+}
+
+.Rectangle7 {
+    width: 474px;
+    height: 106px;
+    position: absolute;
+}
+
+.Rectangle7:nth-child(1) {
+    left: 101px;
+    top: 238px;
+    background: #72B180;
+}
+
+.Rectangle7:nth-child(2) {
+    left: 101px;
+    top: 386px;
+    background: #BCBF2E;
+}
+
+.Rectangle7:nth-child(3) {
+    left: 628px;
+    top: 238px;
+    background: #9EB5E1;
+}
+
+.Rectangle7:nth-child(4) {
+    left: 628px;
+    top: 386px;
+    background: #9684A5;
+}
+
+.Rectangle7:nth-child(5) {
+    width: 1001px;
+    left: 101px;
+    top: 534px;
+    background: #CF9898;
+}
+
+.VRdering {
+    width: 129px;
+    height: 48px;
+    left: 274px;
+    top: 274px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Tillbaka {
+    width: 129px;
+    height: 48px;
+    left: 101px;
+    top: 657px;
+    position: absolute;
+    color: #222222;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Dilemma {
+    width: 111px;
+    height: 31px;
+    left: 283px;
+    top: 425px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Tillsammans {
+    width: 153px;
+    height: 48px;
+    left: 789px;
+    top: 425px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.AllaKort {
+    width: 129px;
+    height: 48px;
+    left: 537px;
+    top: 575px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.VemRDuVemRJag {
+    width: 258px;
+    height: 48px;
+    left: 736px;
+    top: 273px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+.Line7 {
+    width: 86.67px;
+    height: 3.45px;
+    left: 101px;
+    top: 688.30px;
+    position: absolute;
+    transform: rotate(-2.81deg);
+    transform-origin: 0 0;
+    border: 2px black solid;
+}
