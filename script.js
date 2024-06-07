@@ -15,6 +15,15 @@ document.getElementById("loginForm").addEventListener("submit", function (event)
     }
 });
 
+document.getElementById("forgotPassword").addEventListener("click", function () {
+    alert("Lösenordsåterställning är inte implementerad ännu.");
+});
+
+function logout() {
+    document.getElementById("mainSection").style.display = "none";
+    document.getElementById("loginSection").style.display = "flex";
+}
+
 function showQuiz() {
     document.querySelectorAll(".container").forEach(section => {
         section.style.display = "none";

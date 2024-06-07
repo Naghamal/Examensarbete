@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="sv">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Företagskultur Test & Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
-<body>
+  </head>
+  <body>
     <div class="container" id="loginSection">
-        <form id="loginForm">
-            <h2>Logga in</h2>
-            <input type="text" id="username" placeholder="Användarnamn" required>
-            <input type="password" id="password" placeholder="Lösenord" required>
-            <button type="submit">Logga in</button>
-        </form>
+      <form id="loginForm">
+        <h2>Logga in</h2>
+        <input type="text" id="username" placeholder="Användarnamn" required />
+        <input type="password" id="password" placeholder="Lösenord" required />
+
+        <button type="submit">Logga in</button>
+      </form>
     </div>
 
-    <div class="container" id="mainSection" style="display: none;">
-        <h2>Välkommen till Företagskultur Test & Quiz</h2>
-        <p>Förbättra din företagskultur genom att delta i våra quiz och test, och se dina resultat i realtid!</p>
-        <div class="flex-container">
-            <div class="box quiz-box" onclick="showQuiz()">
-                <h2>Quiz</h2>
-                <p>Delta i ett roligt quiz och lär dig mer om företagskultur.</p>
-            </div>
-            <div class="box test-box" onclick="showTest()">
-                <h2>Test</h2>
-                <p>Genomför vårt omfattande test för att få insikter om din företagskultur.</p>
-            </div>
-            <div class="box result-box" onclick="showResults()">
-                <h2>Resultat</h2>
-                <p>Se dina tidigare resultat och analysera din företagskultur över tid.</p>
-            </div>
+    <div class="container" id="mainSection" style="display: none">
+      <button id="logoutButton" onclick="logout()">Logga ut</button>
+      <img src="image/logga.png" alt="Logo" class="logo" />
+      <h2>Välkommen till Företagskultur Test & Quiz</h2>
+      <p>
+        Förbättra din företagskultur genom att delta i våra quiz och test, och
+        se dina resultat i realtid!
+      </p>
+      <div class="flex-container">
+        <div class="box quiz-box" onclick="showQuiz()">
+          <h2>Quiz</h2>
+          <p>Delta i ett roligt quiz och lär dig mer om företagskultur.</p>
         </div>
+        <div class="box test-box" onclick="showTest()">
+          <h2>Test</h2>
+          <p>
+            Genomför vårt omfattande test för att få insikter om din
+            företagskultur.
+          </p>
+        </div>
+        <div class="box result-box" onclick="showResults()">
+          <h2>Resultat</h2>
+          <p>
+            Se dina tidigare resultat och analysera din företagskultur över tid.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="container" id="quizSection" style="display: none;">
-        <h2>Företagskultur Quiz</h2>
-        <form id="quizForm">
-            <div id="quizQuestions"></div>
-            <button type="button" onclick="submitQuiz()">Skicka in Quiz</button>
-        </form>
-        <button onclick="goBack()">Tillbaka</button>
+    <div class="container" id="quizSection" style="display: none">
+      <h2>Företagskultur Quiz</h2>
+      <form id="quizForm">
+        <div id="quizQuestions"></div>
+        <button type="button" onclick="submitQuiz()">Skicka in Quiz</button>
+      </form>
+      <button onclick="goBack()">Tillbaka</button>
     </div>
 
-    <div class="container" id="testSection" style="display: none;">
-        <h2>Företagskultur Test</h2>
-        <form id="testForm">
-            <div id="testQuestions"></div>
-            <button type="button" onclick="submitTest()">Skicka in Test</button>
-        </form>
-        <button onclick="goBack()">Tillbaka</button>
+    <div class="container" id="testSection" style="display: none">
+      <h2>Företagskultur Test</h2>
+      <form id="testForm">
+        <div id="testQuestions"></div>
+        <button type="button" onclick="submitTest()">Skicka in Test</button>
+      </form>
+      <button onclick="goBack()">Tillbaka</button>
     </div>
 
-    <div class="container" id="resultSection" style="display: none;">
-        <h2>Resultat</h2>
-        <canvas id="resultChart"></canvas>
-        <button onclick="goBack()">Tillbaka</button>
+    <div class="container" id="resultSection" style="display: none">
+      <h2>Resultat</h2>
+      <canvas id="resultChart"></canvas>
+      <button onclick="goBack()">Tillbaka</button>
     </div>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
