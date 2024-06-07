@@ -1,208 +1,147 @@
-// Användardata för inloggning
 const userData = {
     username: "user",
     password: "password"
 };
 
-// Funktion för att hantera inloggning
 document.getElementById("loginForm").addEventListener("submit", function (event) {
     event.preventDefault();
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
     if (username === userData.username && password === userData.password) {
         document.getElementById("loginSection").style.display = "none";
-        document.getElementById("optionsSection").style.display = "flex";
+        document.getElementById("mainSection").style.display = "flex";
     } else {
         alert("Fel användarnamn eller lösenord!");
     }
 });
 
-// Funktion för att visa testalternativ
-function showTestOptions() {
-    hideAllSections();
-    document.getElementById("testOptions").style.display = "block";
-}
-
-// Funktion för att visa quizalternativ
-function showQuizOptions() {
-    hideAllSections();
-    document.getElementById("quizOptions").style.display = "block";
-}
-
-// Funktion för att starta test
-function startTest() {
-    hideAllSections();
-    document.getElementById("testSection").style.display = "block";
-    renderTestQuestions();
-}
-
-// Funktion för att starta quiz
-function startQuiz() {
-    hideAllSections();
+function showQuiz() {
+    document.querySelectorAll(".container").forEach(section => {
+        section.style.display = "none";
+    });
     document.getElementById("quizSection").style.display = "block";
-    renderQuizQuestions();
+    loadQuizQuestions();
 }
 
-// Funktion för att skicka in testresultat
-function submitTest() {
-    // Lägg till logik för att hantera testresultat här
+function showTest() {
+    document.querySelectorAll(".container").forEach(section => {
+        section.style.display = "none";
+    });
+    document.getElementById("testSection").style.display = "block";
+    loadTestQuestions();
 }
 
-// Funktion för att skicka in quizresultat
-function submitQuiz() {
-    // Lägg till logik för att hantera quizresultat här
+function showResults() {
+    document.querySelectorAll(".container").forEach(section => {
+        section.style.display = "none";
+    });
+    document.getElementById("resultSection").style.display = "block";
+    drawResultChart();
 }
 
-// Funktion för att visa diagram
-function showCharts() {
-    hideAllSections();
-    document.getElementById("charts").style.display = "block";
-    drawTestChart();
-}
-
-// Funktion för att rita testresultatdiagram
-function drawTestChart() {
-    // Funktion för att rita testresultatdiagram
-    function drawTestChart() {
-        const testResults = [/* Här lägger du till testresultaten som du vill rita diagrammet för */];
-        const ctx = document.getElementById("testChart").getContext("2d");
-
-        // Radera tidigare diagram
-        if (window.testChart) {
-            window.testChart.destroy();
-        }
-
-        window.testChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ["Fråga 1", "Fråga 2", "Fråga 3"], // Exempel på frågelabels
-                datasets: [{
-                    label: 'Resultat',
-                    data: testResults, // Använd testresultaten här
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-
-}
-
-// Funktion för att gå tillbaka till menyn
 function goBack() {
-    hideAllSections();
-    document.getElementById("optionsSection").style.display = "flex";
-}
-
-// Funktion för att gömma alla sektioner
-function hideAllSections() {
-    document.querySelectorAll('.container').forEach(section => {
-        section.style.display = 'none';
+    document.querySelectorAll(".container").forEach(section => {
+        section.style.display = "none";
     });
+    document.getElementById("mainSection").style.display = "flex";
 }
 
-// Testfrågor och svarsalternativ
-const testQuestions = [
-    {
-        question: "Vad är företagskultur?",
-        options: [
-            "Organisationens värderingar, normer och beteendemönster",
-            "Antalet anställda i företaget",
-            "Hur många kontor företaget har"
-        ],
-        correctAnswer: 0
-    },
-    {
-        question: "Varför är företagskultur viktig?",
-        options: [
-            "Företagskultur påverkar hur anställda trivs och presterar",
-            "Det är inte viktigt",
-            "Företagskultur har ingen påverkan"
-        ],
-        correctAnswer: 0
-    },
-    {
-        question: "Hur kan företagskultur påverkas?",
-        options: [
-            "Genom ledarskapets beteende och värderingar",
-            "Det går inte att påverka",
-            "Genom att anställa fler människor"
-        ],
-        correctAnswer: 0
-    }
-];
-
-// Funktion för att rendera testfrågor
-function renderTestQuestions() {
-    const testQuestionsContainer = document.getElementById("testQuestions");
-    testQuestionsContainer.innerHTML = "";
-    testQuestions.forEach((questionObj, index) => {
-        const questionDiv = document.createElement("div");
-        const options = questionObj.options.map((option, i) => {
-            return `<label><input type="radio" name="question${index}" value="${i}">${option}</label><br>`;
-        }).join("");
-        questionDiv.innerHTML = `<h3>${index + 1}. ${questionObj.question}</h3>${options}`;
-        testQuestionsContainer.appendChild(questionDiv);
-    });
-}
-
-// Quizfrågor och svarsalternativ
-const quizQuestions = [
-    {
-        question: "Vad är en viktig del av en positiv företagskultur?",
-        options: [
-            "Öppen kommunikation och tillit",
-            "Att ingen pratar med varandra",
-            "Hemlighetsmakeri och misstro"
-        ],
-        correctAnswer: 0
-    },
-    {
-        question: "Vad kan en negativ företagskultur leda till?",
-        options: [
-            "Sämre arbetsmiljö och minskad produktivitet",
-            "Högre löner för anställda",
-            "Bättre samarbete mellan kollegor"
-        ],
-        correctAnswer: 0
-    },
-    {
-        question: "Vad bör ledningen göra för att främja en positiv företagskultur?",
-        options: [
-            "Lyssna på anställda och vara öppna för feedback",
-            "Ignorera anställdas åsikter",
-            "Stänga av kommunikationskanaler"
-        ],
-        correctAnswer: 0
-    }
-];
-
-// Funktion för att rendera quizfrågor
-function renderQuizQuestions() {
+function loadQuizQuestions() {
+    const quizQuestions = [
+        { question: "Vad är viktigt för företagskultur?", options: ["Socialt ansvarstagande", "Ekonomisk vinst", "Teknologisk innovation", "Militär precision"], correctAnswer: 0 },
+        { question: "Vilken roll spelar ledare i att forma företagskulturen?", options: ["Ingen roll alls", "Minimal roll", "Stor roll", "Avgörande roll"], correctAnswer: 3 },
+        { question: "Hur kan företag främja en positiv företagskultur?", options: ["Genom att erbjuda hög lön", "Genom att ha en öppen kommunikation", "Genom att ignorera sina anställda", "Genom att inte ge förmåner"], correctAnswer: 1 },
+        { question: "Varför är företagskultur viktigt för anställda?", options: ["Det spelar ingen roll", "Det påverkar deras sociala liv", "Det påverkar deras mentala hälsa", "Det påverkar deras arbetsprestation"], correctAnswer: 3 },
+        { question: "Hur påverkar företagskulturen företagets resultat?", options: ["Det har ingen påverkan", "Det förbättrar resultatet", "Det minskar resultatet", "Det förblir detsamma"], correctAnswer: 1 }
+    ];
     const quizQuestionsContainer = document.getElementById("quizQuestions");
     quizQuestionsContainer.innerHTML = "";
     quizQuestions.forEach((questionObj, index) => {
-        const questionDiv = document.createElement("div");
-        const options = questionObj.options.map((option, i) => {
-            return `<label><input type="radio" name="question${index}" value="${i}">${option}</label><br>`;
-        }).join("");
-        questionDiv.innerHTML = `<h3>${index + 1}. ${questionObj.question}</h3>${options}`;
-        quizQuestionsContainer.appendChild(questionDiv);
+        const questionElement = document.createElement("div");
+        questionElement.innerHTML = `
+            <p>${index + 1}. ${questionObj.question}</p>
+            ${questionObj.options.map((option, i) => `<input type="radio" id="quizOption${index}${i}" name="quizQuestion${index}" value="${i}"><label for="quizOption${index}${i}">${option}</label><br>`).join("")}
+        `;
+        quizQuestionsContainer.appendChild(questionElement);
+    });
+}
+
+function loadTestQuestions() {
+    const testQuestions = [
+        { question: "Hur ofta håller ditt företag team-building aktiviteter?", options: ["Aldrig", "En gång om året", "En gång i halvåret", "En gång i kvartalet"], correctAnswer: 2 },
+        { question: "Hur värderas anställdas åsikter i ditt företag?", options: ["Ignoreras", "Beaktas ibland", "Beaktas ofta", "Alltid värderas"], correctAnswer: 3 },
+        { question: "Hur transparent är ledningen i ditt företag?", options: ["Inte alls transparent", "Lite transparent", "Ganska transparent", "Fullständigt transparent"], correctAnswer: 2 },
+        { question: "Hur hanterar ditt företag konflikter?", options: ["Ignorerar dem", "Hanterar dem ibland", "Hanterar dem snabbt", "Hanterar dem proaktivt"], correctAnswer: 3 },
+        { question: "Hur uppmuntras innovation i ditt företag?", options: ["Inte alls", "Lite", "Ganska mycket", "Mycket"], correctAnswer: 2 }
+    ];
+    const testQuestionsContainer = document.getElementById("testQuestions");
+    testQuestionsContainer.innerHTML = "";
+    testQuestions.forEach((questionObj, index) => {
+        const questionElement = document.createElement("div");
+        questionElement.innerHTML = `
+            <p>${index + 1}. ${questionObj.question}</p>
+            ${questionObj.options.map((option, i) => `<input type="radio" id="testOption${index}${i}" name="testQuestion${index}" value="${i}"><label for="testOption${index}${i}">${option}</label><br>`).join("")}
+        `;
+        testQuestionsContainer.appendChild(questionElement);
+    });
+}
+
+function submitQuiz() {
+    const quizResults = [];
+    const quizQuestions = document.querySelectorAll("#quizQuestions div");
+    quizQuestions.forEach((questionDiv, index) => {
+        const selectedOption = document.querySelector(`input[name="quizQuestion${index}"]:checked`);
+        quizResults.push(selectedOption ? parseInt(selectedOption.value) : null);
+    });
+    localStorage.setItem('quizResults', JSON.stringify(quizResults));
+    alert("Quizet har skickats in!");
+    showResults();
+}
+
+function submitTest() {
+    const testResults = [];
+    const testQuestions = document.querySelectorAll("#testQuestions div");
+    testQuestions.forEach((questionDiv, index) => {
+        const selectedOption = document.querySelector(`input[name="testQuestion${index}"]:checked`);
+        testResults.push(selectedOption ? parseInt(selectedOption.value) : null);
+    });
+    localStorage.setItem('testResults', JSON.stringify(testResults));
+    alert("Testet har skickats in!");
+    showResults();
+}
+
+function drawResultChart() {
+    const quizResults = JSON.parse(localStorage.getItem('quizResults')) || [];
+    const testResults = JSON.parse(localStorage.getItem('testResults')) || [];
+
+    const ctx = document.getElementById('resultChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Fråga 1', 'Fråga 2', 'Fråga 3', 'Fråga 4', 'Fråga 5', 'Fråga 6'],
+            datasets: [
+                {
+                    label: 'Quizresultat',
+                    data: quizResults,
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Testresultat',
+                    data: testResults,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 }
