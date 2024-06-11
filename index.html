@@ -9,18 +9,23 @@
   </head>
   <body>
     <div class="container" id="loginSection">
+      <h1>Företagskultur Test & Quiz</h1>
       <form id="loginForm">
         <h2>Logga in</h2>
+        <label for="username">Användarnamn</label>
         <input type="text" id="username" placeholder="Användarnamn" required />
+
+        <label for="password">Lösenord</label>
         <input type="password" id="password" placeholder="Lösenord" required />
 
         <button type="submit">Logga in</button>
+        <a href="#" id="forgotPassword">Glömt lösenord?</a>
       </form>
     </div>
 
     <div class="container" id="mainSection" style="display: none">
       <button id="logoutButton" onclick="logout()">Logga ut</button>
-      <img src="image/logga.png" alt="Logo" class="logo" />
+      <img src="image/logga.png" alt="Företagslogotyp" class="logo" />
       <h2>Välkommen till Företagskultur Test & Quiz</h2>
       <p>
         Förbättra din företagskultur genom att delta i våra quiz och test, och
